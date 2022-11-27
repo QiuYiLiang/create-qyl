@@ -1,0 +1,21 @@
+{
+  "name": "create-qyl",
+  "version": "1.0.0",
+  "description": "",
+  "bin": {
+    "create-qyl": "index.js"
+  },
+  "files": [
+    "index.js",
+    "template"
+  ],
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "minimist": "^1.2.7",
+    "prompts": "^2.4.2",
+    "fs-extra": "^10.1.0"
+  }
+}
