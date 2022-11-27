@@ -15,12 +15,12 @@
   ],
   "main": "./dist/__CORE__.cjs.js",
   "module": "./dist/__CORE__.es.js",
-  "types": "./dist/__CORE__/src/index.d.ts",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/__CORE__.es.js",
       "require": "./dist/__CORE__.cjs.js",
-      "types": "./dist/__CORE__/src/index.d.ts"
+      "types": "./dist/index.d.ts"
     }
   },
   "dependencies": {
