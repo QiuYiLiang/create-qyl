@@ -57,7 +57,7 @@ async function main() {
       join(targetDir, "packages/core"),
       join(targetDir, "packages", coreName)
     );
-    fs.mkdirSync(join(targetDir, "packages/fixtures"));
+    fs.mkdirSync(join(targetDir, "fixtures"));
   } catch (e) {
     fs.removeSync(targetDir);
     console.log(e.message);
