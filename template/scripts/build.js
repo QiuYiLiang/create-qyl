@@ -79,7 +79,7 @@ async function build(target) {
       polyfillNode(),
       terser(),
     ],
-    external: ["react", "react-dom", "vue", "veaury"],
+    external: [],
   };
 
   const outputOptionsList = (
@@ -90,12 +90,7 @@ async function build(target) {
     entryFileNames: `${target}.${format}.js`,
     format,
     sourcemap: true,
-    globals: {
-      react: "React",
-      "react-dom": "ReactDom",
-      vue: "Vue",
-      veaury: "Veaury",
-    },
+    globals: {},
   }));
 
   let bundle;

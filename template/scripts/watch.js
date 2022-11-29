@@ -36,7 +36,7 @@ const inputOptions = {
     nodeGlobals(),
     polyfillNode(),
   ],
-  external: ["react", "react-dom", "vue", "veaury"],
+  external: [],
 };
 
 const pkg = require(resolve(packageDir, "./package.json"));
@@ -49,12 +49,7 @@ const outputOptionsList = formats.map((format) => ({
   entryFileNames: `${target}.${format}.js`,
   format,
   sourcemap: true,
-  globals: {
-    react: "React",
-    "react-dom": "ReactDom",
-    vue: "Vue",
-    veaury: "Veaury",
-  },
+  globals: {},
 }));
 
 watch();
