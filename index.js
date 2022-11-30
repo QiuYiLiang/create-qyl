@@ -52,7 +52,11 @@ async function main() {
       "__CORE__",
       coreName
     );
-    replaceFile(join(targetDir, "scripts/watch.js"), "__CORE__", coreName);
+    replaceFile(
+      join(targetDir, "scripts/buildConfig.js"),
+      "__CORE__",
+      coreName
+    );
     if (coreName !== "core") {
       fs.moveSync(
         join(targetDir, "packages/core"),

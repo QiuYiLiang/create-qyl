@@ -1,4 +1,5 @@
 {
+  "defaultWatch": "__CORE__",
   "targets": [],
   "external": [],
   "globals": [],

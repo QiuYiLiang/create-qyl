@@ -10,14 +10,14 @@ const nodeBuiltins = require("rollup-plugin-node-builtins");
 const nodeGlobals = require("rollup-plugin-node-globals");
 const polyfillNode = require("rollup-plugin-polyfill-node");
 
+const config = require(resolve(__dirname, "buildConfid.json"));
+
 const args = require("minimist")(process.argv.slice(2));
 
-const target = args._[0] || "__CORE__";
+const target = args._[0] || config.defaultWatch;
 const formats = (args.f || "es").split(",");
 
 const packageDir = resolve(__dirname, `../packages/${target}`);
-
-const config = require(resolve(__dirname, "buildConfid.json"));
 
 const inputOptions = {
   input: resolve(packageDir, `./src/index.ts`),
