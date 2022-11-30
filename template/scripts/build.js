@@ -79,18 +79,18 @@ async function build(target) {
       polyfillNode(),
       terser(),
     ],
-    external: [],
+    external: buildOptions.external || [],
   };
 
   const outputOptionsList = (
     formats.length === 0 ? buildOptions.formats || [] : formats
   ).map((format) => ({
     dir: resolve(packageDir, `./dist`),
-    name: pkg.name,
+    name: buildOptions.name,
     entryFileNames: `${target}.${format}.js`,
     format,
     sourcemap: true,
-    globals: {},
+    globals: buildOptions.globals || {},
   }));
 
   let bundle;

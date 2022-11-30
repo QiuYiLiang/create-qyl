@@ -36,7 +36,8 @@ const inputOptions = {
     nodeGlobals(),
     polyfillNode(),
   ],
-  external: [],
+  external: buildOptions.external || [],
+  globals: buildOptions.globals || {},
 };
 
 const pkg = require(resolve(packageDir, "./package.json"));
