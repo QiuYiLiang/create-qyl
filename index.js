@@ -53,7 +53,7 @@ async function main() {
       coreName
     );
     replaceFile(
-      join(targetDir, "scripts/buildConfig.js"),
+      join(targetDir, "scripts/buildConfig.json"),
       "__CORE__",
       coreName
     );
@@ -63,7 +63,6 @@ async function main() {
         join(targetDir, "packages", coreName)
       );
     }
-    fs.mkdirSync(join(targetDir, "fixtures"));
   } catch (e) {
     fs.removeSync(targetDir);
     console.log(e.message);
