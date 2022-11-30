@@ -1,7 +1,9 @@
 {
   "scripts": {
     "watch": "node scripts/watch.js",
-    "build": "node scripts/build.js"
+    "build": "node scripts/build.js",
+    "test": "jest",
+    "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js  --runInBand"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^23.0.2",
