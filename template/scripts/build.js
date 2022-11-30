@@ -14,7 +14,7 @@ const polyfillNode = require("rollup-plugin-polyfill-node");
 
 const args = require("minimist")(process.argv.slice(2));
 
-const config = require(resolve(__dirname, "buildConfid.json"));
+const config = require(resolve(__dirname, "buildConfig.json"));
 
 const targets =
   args._.length > 0
@@ -104,7 +104,7 @@ async function build(target) {
   try {
     bundle = await rollup(inputOptions);
 
-    await generateOutputs(bundle, outputOptionsList);
+    await generateOutputs(bundle, pkg.name, outputOptionsList);
   } catch (error) {
     console.error(error);
   }
@@ -113,9 +113,9 @@ async function build(target) {
   }
 }
 
-async function generateOutputs(bundle, outputOptionsList) {
+async function generateOutputs(bundle, pkgName, outputOptionsList) {
   for (const outputOptions of outputOptionsList) {
     await bundle.write(outputOptions);
-    console.info(`${outputOptions.name} ${outputOptions.format} Bundled!`);
+    console.info(`${pkgName} ${outputOptions.format} Bundled!`);
   }
 }

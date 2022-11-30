@@ -10,7 +10,7 @@ const nodeBuiltins = require("rollup-plugin-node-builtins");
 const nodeGlobals = require("rollup-plugin-node-globals");
 const polyfillNode = require("rollup-plugin-polyfill-node");
 
-const config = require(resolve(__dirname, "buildConfid.json"));
+const config = require(resolve(__dirname, "buildConfig.json"));
 
 const args = require("minimist")(process.argv.slice(2));
 

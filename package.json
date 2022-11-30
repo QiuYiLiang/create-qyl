@@ -1,6 +1,6 @@
 {
   "name": "create-qyl",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "",
   "bin": {
     "create-qyl": "index.js"
