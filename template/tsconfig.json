@@ -3,6 +3,10 @@
     "strict": true,
     "baseUrl": ".",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "paths": {
+      "*": ["packages/*/src"],
+      "shared": ["packages/shared/src"]
+    },
     "sourceMap": true,
     "target": "ESNext",
     "allowJs": false,
