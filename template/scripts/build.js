@@ -94,19 +94,16 @@ async function build(target) {
   }));
 
   let bundle;
-  let buildFailed = false;
   try {
     bundle = await rollup(inputOptions);
 
     await generateOutputs(bundle, outputOptionsList);
   } catch (error) {
-    buildFailed = true;
     console.error(error);
   }
   if (bundle) {
     await bundle.close();
   }
-  process.exit(buildFailed ? 1 : 0);
 }
 
 async function generateOutputs(bundle, outputOptionsList) {

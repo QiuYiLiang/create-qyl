@@ -3,6 +3,7 @@
     "strict": true,
     "baseUrl": ".",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "sourceMap": true,
     "target": "ESNext",
     "allowJs": false,
     "skipLibCheck": true,
