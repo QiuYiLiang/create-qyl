@@ -17,6 +17,8 @@ const formats = (args.f || "es").split(",");
 
 const packageDir = resolve(__dirname, `../packages/${target}`);
 
+const config = require(resolve(__dirname, "buildConfid.json"));
+
 const inputOptions = {
   input: resolve(packageDir, `./src/index.ts`),
   plugins: [
@@ -36,8 +38,10 @@ const inputOptions = {
     nodeGlobals(),
     polyfillNode(),
   ],
-  external: buildOptions.external || [],
-  globals: buildOptions.globals || {},
+
+  external: Array.from(
+    new Set([...(config.external || []), ...(buildOptions.external || [])])
+  ),
 };
 
 const pkg = require(resolve(packageDir, "./package.json"));
@@ -50,7 +54,7 @@ const outputOptionsList = formats.map((format) => ({
   entryFileNames: `${target}.${format}.js`,
   format,
   sourcemap: true,
-  globals: {},
+  globals: { ...(config.globals || {}), ...(buildOptions.globals || {}) },
 }));
 
 watch();

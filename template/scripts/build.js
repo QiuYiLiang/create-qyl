@@ -13,9 +13,14 @@ const nodeGlobals = require("rollup-plugin-node-globals");
 const polyfillNode = require("rollup-plugin-polyfill-node");
 
 const args = require("minimist")(process.argv.slice(2));
+
+const config = require(resolve(__dirname, "buildConfid.json"));
+
 const targets =
   args._.length > 0
     ? args._
+    : config.targets.length > 0
+    ? config.targets
     : fs.readdirSync("packages").filter((f) => {
         if (!fs.statSync(`packages/${f}`).isDirectory()) {
           return false;
@@ -79,7 +84,9 @@ async function build(target) {
       polyfillNode(),
       terser(),
     ],
-    external: buildOptions.external || [],
+    external: Array.from(
+      new Set([...(config.external || []), ...(buildOptions.external || [])])
+    ),
   };
 
   const outputOptionsList = (
@@ -90,7 +97,7 @@ async function build(target) {
     entryFileNames: `${target}.${format}.js`,
     format,
     sourcemap: true,
-    globals: buildOptions.globals || {},
+    globals: { ...(config.globals || {}), ...(buildOptions.globals || {}) },
   }));
 
   let bundle;
