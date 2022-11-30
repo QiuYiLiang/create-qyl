@@ -1,6 +1,6 @@
 {
   "name": "create-qyl",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "",
   "bin": {
     "create-qyl": "index.js"
@@ -10,9 +10,7 @@
   },
   "files": [
     "index.js",
-    "template",
-    "template/fixtures",
-    "template/packages/**/__tests__"
+    "template"
   ],
   "main": "index.js",
   "keywords": [],

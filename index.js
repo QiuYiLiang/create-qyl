@@ -63,6 +63,13 @@ async function main() {
         join(targetDir, "packages", coreName)
       );
     }
+    [
+      "fixtures",
+      `packages/${coreName}/__tests__`,
+      "packages/shared/__tests__",
+    ].forEach((dirname) => {
+      fs.mkdirSync(join(targetDir, dirname));
+    });
   } catch (e) {
     fs.removeSync(targetDir);
     console.log(e.message);
