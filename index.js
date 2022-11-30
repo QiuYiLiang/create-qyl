@@ -53,10 +53,12 @@ async function main() {
       coreName
     );
     replaceFile(join(targetDir, "scripts/watch.js"), "__CORE__", coreName);
-    fs.moveSync(
-      join(targetDir, "packages/core"),
-      join(targetDir, "packages", coreName)
-    );
+    if (coreName !== "core") {
+      fs.moveSync(
+        join(targetDir, "packages/core"),
+        join(targetDir, "packages", coreName)
+      );
+    }
     fs.mkdirSync(join(targetDir, "fixtures"));
   } catch (e) {
     fs.removeSync(targetDir);

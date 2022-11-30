@@ -1,6 +1,6 @@
 {
   "name": "create-qyl",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "",
   "bin": {
     "create-qyl": "index.js"
@@ -18,8 +18,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "create-qyl": "link:",
+    "fs-extra": "^10.1.0",
     "minimist": "^1.2.7",
-    "prompts": "^2.4.2",
-    "fs-extra": "^10.1.0"
+    "prompts": "^2.4.2"
   }
 }
