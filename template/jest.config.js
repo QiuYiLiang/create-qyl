@@ -19,7 +19,6 @@ module.exports = {
   moduleFileExtensions: ["ts", "tsx", "js", "json"],
   moduleNameMapper: {
     __CORE__: "<rootDir>/packages/__CORE__/src",
-    shared: "<rootDir>/packages/shared/src",
   },
   rootDir: __dirname,
   testMatch: ["<rootDir>/packages/**/__tests__/**/*spec.[jt]s?(x)"],

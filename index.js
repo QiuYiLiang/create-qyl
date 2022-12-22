@@ -15,9 +15,18 @@ function replaceFile(filePath, sourceRegx, targetStr) {
   );
 }
 
+function replaceFiles(filePaths, targets) {
+  filePaths.forEach((filePath) => {
+    targets.forEach(([sourceRegx, targetStr]) => {
+      replaceFile(filePath, sourceRegx, targetStr);
+    });
+  });
+}
+
 async function main() {
   let projectName = argv._[0];
   let coreName = "core";
+  let corePackageName = "core";
   if (!projectName) {
     try {
       const result = await prompts([
@@ -33,9 +42,17 @@ async function main() {
           message: "Core name:",
           initial: "core",
         },
+        {
+          type: "text",
+          name: "corePackageName",
+          message: "Core Package name:",
+          initial: "core",
+        },
       ]);
 
       projectName = result.projectName;
+
+      corePackageName = result.corePackageName;
 
       coreName = result.coreName;
     } catch (e) {
@@ -47,27 +64,27 @@ async function main() {
   const targetDir = join(cwd, projectName);
   try {
     fs.copySync(templateDir, targetDir);
-    replaceFile(
-      join(targetDir, "packages/core/package.json"),
-      "__CORE__",
-      coreName
-    );
-    replaceFile(
-      join(targetDir, "scripts/buildConfig.json"),
-      "__CORE__",
-      coreName
-    );
+
+    const filePaths = [
+      "packages/core/package.json",
+      "scripts/buildConfig.json",
+      "tsconfig.json",
+    ].map((path) => join(targetDir, path));
+
+    const targets = [
+      ["__CORE_PACKAGE__", corePackageName],
+      ["__CORE__", coreName],
+    ];
+
+    replaceFiles(filePaths, targets);
+
     if (coreName !== "core") {
       fs.moveSync(
         join(targetDir, "packages/core"),
         join(targetDir, "packages", coreName)
       );
     }
-    [
-      "fixtures",
-      `packages/${coreName}/__tests__`,
-      "packages/shared/__tests__",
-    ].forEach((dirname) => {
+    ["examples", `packages/${coreName}/__tests__`].forEach((dirname) => {
       fs.mkdirSync(join(targetDir, dirname));
     });
   } catch (e) {

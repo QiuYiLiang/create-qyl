@@ -5,7 +5,7 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "paths": {
       "*": ["packages/*/src"],
-      "shared": ["packages/shared/src"]
+      "__CORE_PACKAGE__": ["packages/__CORE__/src"]
     },
     "sourceMap": true,
     "target": "ESNext",

@@ -1,5 +1,5 @@
 {
-  "name": "__CORE__",
+  "name": "__CORE_PACKAGE__",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
@@ -22,8 +22,5 @@
       "require": "./dist/__CORE__.cjs.js",
       "types": "./dist/index.d.ts"
     }
-  },
-  "dependencies": {
-    "shared": "workspace:*"
   }
 }

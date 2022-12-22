@@ -1,6 +1,6 @@
 {
   "defaultWatch": "__CORE__",
-  "targets": ["shared", "__CORE__"],
+  "targets": ["__CORE__"],
   "external": [],
   "globals": [],
   "sourcemap": true
